@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pertolongan Pertama pada Kejang | PMI Kabupaten Banyuwangi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--off:#EDF2F4;--red:#EF233C;--crimson:#D90429;--navy:#2B2D42;--slate:#8999AE}
+    *{box-sizing:border-box}
+    body{margin:0;background:#171925;color:var(--navy);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .stage{width:min(100vw,calc(100vh * 16 / 9));aspect-ratio:16/9}
+    .slide{display:none;width:100%;height:100%;position:relative;overflow:hidden;background:var(--off)}
+    .slide.active{display:flex;animation:slideIn .42s cubic-bezier(.2,.75,.25,1) both}
+    .slide.exit-next{animation:slideOutLeft .18s ease-in both}
+    .slide.exit-prev{animation:slideOutRight .18s ease-in both}
+    @keyframes slideIn{from{opacity:0;transform:translateX(28px) scale(.99)}to{opacity:1;transform:translateX(0) scale(1)}}
+    @keyframes slideOutLeft{to{opacity:0;transform:translateX(-18px)}}
+    @keyframes slideOutRight{to{opacity:0;transform:translateX(18px)}}
+    .kicker{font-size:clamp(9px,1.05vw,14px);font-weight:850;letter-spacing:.17em;text-transform:uppercase}
+    .display{font-size:clamp(30px,5.1vw,74px);line-height:.98;letter-spacing:-.05em;font-weight:950}
+    .heading{font-size:clamp(23px,3vw,44px);line-height:1.05;letter-spacing:-.035em;font-weight:900}
+    .bodycopy{font-size:clamp(12px,1.38vw,19px);line-height:1.45}
+    .smallcopy{font-size:clamp(10px,1.08vw,15px);line-height:1.42}
+    .accent{height:6px;width:64px;background:var(--red);border-radius:999px}
+    .photo{width:100%;height:100%;object-fit:cover}
+    .dot{height:7px;width:7px;border-radius:50%;background:#ffffff55;transition:all .2s}
+    .dot.current{width:23px;border-radius:99px;background:var(--red)}
+    .number{font-variant-numeric:tabular-nums}
+    @media(max-width:640px){.controls{gap:8px}.controls button{padding:7px 10px}}
+    @media(prefers-reduced-motion:reduce){.slide.active,.slide.exit-next,.slide.exit-prev{animation:none}}
+    @media print{body{background:white;padding:0!important}.controls,.hint,.utility{display:none!important}.stage{width:100%;height:auto;aspect-ratio:auto;box-shadow:none!important;border-radius:0!important}.slide{display:flex!important;aspect-ratio:16/9;page-break-after:always;animation:none!important}}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-3 sm:p-5">
+  <main class="stage rounded-2xl overflow-hidden shadow-2xl" aria-label="Presentasi Pertolongan Pertama pada Kejang">
+    <!-- Slide 1 -->
+    <section class="slide active flex-col justify-between p-[5.5%]" aria-label="Slide 1: Judul">
+      <div class="flex items-center gap-3 relative z-10">
+        <div class="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-[#EF233C] text-white flex items-center justify-center text-2xl font-black">+</div>
+        <div><p class="font-black text-xs sm:text-base tracking-wide">PMI KABUPATEN BANYUWANGI</p><p class="text-[10px] sm:text-sm text-[#8999AE]">Edukasi pertolongan pertama</p></div>
+      </div>
+      <div class="grid grid-cols-12 gap-4 items-center relative z-10">
+        <div class="col-span-8">
+          <p class="kicker text-[#D90429] mb-4">Panduan praktis</p>
+          <h1 class="display mb-5">PERTOLONGAN<br/>PERTAMA<br/>PADA <span class="text-[#EF233C]">KEJANG</span></h1>
+          <p class="bodycopy text-[#55596C] mb-5">Kenali <span class="text-[#EF233C] font-black">•</span> Lindungi <span class="text-[#EF233C] font-black">•</span> Tolong</p>
+          <p class="font-extrabold text-sm sm:text-lg">M. Firdausillah</p><p class="smallcopy text-[#8999AE]">PMI Kabupaten Banyuwangi</p>
+        </div>
+        <div class="col-span-4 h-full min-h-0 relative">
+          <img class="photo rounded-[28px]" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85" alt="Tenaga kesehatan berdiskusi dalam lingkungan medis" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none" class="absolute inset-0 rounded-[28px] bg-[#2B2D42] items-center justify-center text-white"><span class="text-7xl">✚</span></div>
+          <div class="absolute -bottom-3 -left-3 bg-[#EF233C] text-white rounded-xl px-4 py-3 shadow-lg"><p class="kicker">First aid</p><p class="font-black text-lg">Act safely</p></div>
+        </div>
+      </div>
+      <div class="flex justify-between items-end relative z-10"><p class="smallcopy text-[#8999AE]">Tetap tenang. Utamakan keselamatan.</p><p class="kicker">01 / 08</p></div>
+      <div class="absolute -right-20 -top-24 w-64 h-64 rounded-full bg-[#EF233C]/10"></div>
+      <div class="absolute bottom-0 left-0 h-2 w-1/3 bg-[#EF233C]"></div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 2: Pengertian dan tanda">
+      <div><p class="kicker text-[#D90429] mb-3">01 — Pahami kondisinya</p><h2 class="heading">Pengertian dan tanda kejang</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+        <div class="col-span-7 flex flex-col gap-4">
+          <div class="bg-white rounded-2xl p-5">
+            <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+            <p class="bodycopy">Kejang adalah aktivitas listrik otak yang abnormal sehingga mengganggu gerakan, kesadaran, atau respons tubuh.</p>
+          </div>
+          <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+            <p class="kicker text-[#EF233C] mb-3">Tanda-tanda</p>
+            <ul class="bodycopy space-y-2">
+              <li>— Tubuh kaku atau menyentak.</li><li>— Tidak merespons saat dipanggil.</li><li>— Tatapan kosong atau kehilangan kesadaran.</li><li>— Bingung atau mengantuk setelah kejang.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-5 relative min-h-0">
+          <img class="photo rounded-2xl" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=85" alt="Ilustrasi edukasi kesehatan dan otak" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none" class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"><span class="text-7xl">🧠</span></div>
+          <div class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"><p class="smallcopy font-bold">Setiap kejang bisa tampak berbeda. Amati, jangan menebak penyebabnya.</p></div>
+        </div>
+      </div>
+      <p class="smallcopy text-[#8999AE]">Perhatikan durasi kejang dan perubahan respons korban.</p>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 3: Penyebab">
+      <div><p class="kicker text-[#D90429] mb-3">02 — Kemungkinan penyebab</p><h2 class="heading">Kejang punya beragam penyebab</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-3 grid-rows-2 gap-3 flex-1">
+        <div class="bg-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">🧠</span><div><h3 class="font-black text-lg sm:text-xl">Epilepsi</h3><p class="smallcopy text-[#8999AE]">Salah satu kondisi yang dapat menyebabkan kejang berulang.</p></div></div>
+        <div class="bg-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">🌡️</span><div><h3 class="font-black text-lg sm:text-xl">Demam pada anak</h3><p class="smallcopy text-[#8999AE]">Kejang demam dapat terjadi pada sebagian anak.</p></div></div>
+        <div class="bg-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">🩸</span><div><h3 class="font-black text-lg sm:text-xl">Gula darah rendah</h3><p class="smallcopy text-[#8999AE]">Gangguan metabolik yang perlu ditangani tenaga medis.</p></div></div>
+        <div class="bg-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">🩹</span><div><h3 class="font-black text-lg sm:text-xl">Cedera kepala</h3><p class="smallcopy text-[#8999AE]">Cedera atau gangguan pada otak.</p></div></div>
+        <div class="bg-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">🦠</span><div><h3 class="font-black text-lg sm:text-xl">Infeksi otak</h3><p class="smallcopy text-[#8999AE]">Termasuk infeksi serius yang perlu evaluasi medis.</p></div></div>
+        <div class="bg-[#2B2D42] text-white rounded-2xl p-4 flex flex-col justify-between"><span class="text-3xl">⚠️</span><div><h3 class="font-black text-lg sm:text-xl">Penyebab lain</h3><p class="smallcopy text-[#EDF2F4]">Gangguan elektrolit atau keracunan.</p></div></div>
+      </div>
+      <div class="rounded-xl bg-[#EF233C] text-white px-5 py-3"><p class="bodycopy font-extrabold">Ingat: kejang tidak selalu berarti epilepsi.</p></div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 4: Tindakan saat kejang">
+      <div><p class="kicker text-[#D90429] mb-3">03 — Saat kejang berlangsung</p><h2 class="heading">Lindungi, jangan menahan</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+        <div class="col-span-7 flex flex-col justify-center gap-3">
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">1</span><p class="bodycopy font-semibold">Tetap tenang dan amankan area.</p></div>
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">2</span><p class="bodycopy font-semibold">Jauhkan benda berbahaya di sekitarnya.</p></div>
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">3</span><p class="bodycopy font-semibold">Lindungi kepala dengan alas lunak.</p></div>
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">4</span><p class="bodycopy font-semibold">Catat durasi kejang.</p></div>
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">5</span><p class="bodycopy font-semibold">Longgarkan pakaian di sekitar leher jika memungkinkan.</p></div>
+          <div class="flex gap-3 items-start"><span class="w-8 h-8 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black">6</span><p class="bodycopy font-semibold">Dampingi korban sampai kejang berhenti.</p></div>
+        </div>
+        <div class="col-span-5 relative min-h-0">
+          <img class="photo rounded-2xl" src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=800&q=85" alt="Ilustrasi perlengkapan dan lingkungan pertolongan pertama" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none" class="absolute inset-0 rounded-2xl bg-[#2B2D42] text-white items-center justify-center flex-col gap-3"><span class="text-7xl">🛡️</span><p class="font-black">Lindungi kepala</p></div>
+          <div class="absolute inset-x-3 bottom-3 rounded-xl bg-[#2B2D42]/95 text-white p-4"><p class="kicker text-[#EF233C] mb-1">Prioritas</p><p class="bodycopy font-bold">Cegah cedera. Beri ruang. Awasi waktunya.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 5: Larangan">
+      <div><p class="kicker text-[#D90429] mb-3">04 — Hal yang harus dihindari</p><h2 class="heading">Niat menolong harus tetap aman</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-2 gap-4 flex-1 min-h-0">
+        <div class="bg-white rounded-2xl p-5">
+          <div class="flex items-center gap-3 mb-4"><span class="w-9 h-9 rounded-full bg-red-100 text-[#D90429] flex items-center justify-center text-xl font-black">×</span><h3 class="font-black text-xl sm:text-2xl">JANGAN</h3></div>
+          <ul class="bodycopy space-y-3 text-[#55596C]">
+            <li>• Menahan gerakan tubuh.</li><li>• Memasukkan benda ke mulut.</li><li>• Membuka paksa rahang.</li><li>• Memberikan makanan, minuman, atau obat lewat mulut.</li><li>• Meninggalkan korban sendirian.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-[#2B2D42] text-white p-5 relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-[#EF233C]/20"></div>
+          <div class="relative z-10"><p class="kicker text-[#EF233C] mb-3">Mengapa penting?</p><h3 class="font-black text-2xl sm:text-3xl mb-4">Jangan memasukkan apa pun ke mulut.</h3><p class="bodycopy text-[#EDF2F4]">Korban tidak akan menelan lidahnya. Benda di mulut justru dapat menyebabkan cedera atau menghambat jalan napas.</p><div class="mt-5 border-t border-white/20 pt-4 smallcopy text-[#8999AE]">Lindungi dari bahaya di sekitar dan tunggu gerakan kejang berhenti.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 6: Setelah kejang">
+      <div><p class="kicker text-[#D90429] mb-3">05 — Setelah kejang berhenti</p><h2 class="heading">Periksa respons dan pernapasan</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+        <div class="col-span-7 flex flex-col justify-center gap-3">
+          <div class="flex gap-3 items-start"><span class="text-[#EF233C] text-2xl font-black">01</span><p class="bodycopy">Periksa respons dan pernapasan.</p></div>
+          <div class="flex gap-3 items-start"><span class="text-[#EF233C] text-2xl font-black">02</span><p class="bodycopy">Jika belum sadar penuh tetapi bernapas normal, posisikan miring bila aman.</p></div>
+          <div class="flex gap-3 items-start"><span class="text-[#EF233C] text-2xl font-black">03</span><p class="bodycopy">Pantau jalan napas dan pernapasan.</p></div>
+          <div class="flex gap-3 items-start"><span class="text-[#EF233C] text-2xl font-black">04</span><p class="bodycopy">Tenangkan korban saat mulai sadar.</p></div>
+          <div class="flex gap-3 items-start"><span class="text-[#EF233C] text-2xl font-black">05</span><p class="bodycopy">Jika tidak bernapas normal, panggil bantuan dan mulai RJP sesuai pelatihan.</p></div>
+        </div>
+        <div class="col-span-5 relative min-h-0">
+          <img class="photo rounded-2xl" src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=85" alt="Petugas kesehatan memberikan perhatian kepada pasien" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none" class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"><span class="text-7xl">🩺</span></div>
+          <div class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-4"><p class="kicker text-[#D90429] mb-1">Pantau terus</p><p class="bodycopy font-bold">Jangan beri makan, minum, atau obat sampai korban benar-benar sadar dan mampu menelan dengan aman.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="slide flex-col p-[5.5%] gap-5" aria-label="Slide 7: Kapan meminta bantuan">
+      <div><p class="kicker text-[#D90429] mb-3">06 — Kenali kondisi darurat</p><h2 class="heading">Kapan harus memanggil bantuan?</h2><div class="accent mt-4"></div></div>
+      <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+        <div class="col-span-7 flex flex-col gap-3 justify-center">
+          <div class="bg-white rounded-xl p-3 flex gap-3 items-center"><span class="text-[#EF233C] text-xl">⏱</span><p class="bodycopy font-bold">Kejang berlangsung 5 menit atau lebih.</p></div>
+          <div class="bg-white rounded-xl p-3 flex gap-3 items-center"><span class="text-[#EF233C] text-xl">↻</span><p class="bodycopy font-bold">Kejang berulang tanpa sadar di antaranya.</p></div>
+          <div class="bg-white rounded-xl p-3 flex gap-3 items-center"><span class="text-[#EF233C] text-xl">!</span><p class="bodycopy font-bold">Sulit bernapas atau tidak pulih seperti biasa.</p></div>
+          <div class="bg-white rounded-xl p-3 flex gap-3 items-center"><span class="text-[#EF233C] text-xl">＋</span><p class="bodycopy font-bold">Kejang pertama kali terjadi.</p></div>
+          <div class="bg-white rounded-xl p-3 flex gap-3 items-center"><span class="text-[#EF233C] text-xl">⚠</span><p class="bodycopy font-bold">Ada cedera serius atau kejang terjadi di air.</p></div>
+        </div>
+        <div class="col-span-5 rounded-2xl bg-[#2B2D42] text-white p-5 flex flex-col justify-between">
+          <div><p class="kicker text-[#EF233C] mb-3">Bantuan medis</p><h3 class="font-black text-3xl sm:text-5xl mb-3">119</h3><p class="bodycopy">Hubungi 119 untuk kegawatdaruratan medis, sesuai ketersediaan layanan setempat.</p></div>
+          <div class="border-t border-white/20 pt-4 mt-4"><p class="smallcopy text-[#EDF2F4]">Sampaikan lokasi yang jelas, durasi kejang, kondisi napas, dan respons korban. Ikuti instruksi operator.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8 -->
+    <section class="slide flex-col justify-between p-[5.5%] bg-[#2B2D42] text-white" aria-label="Slide 8: Penutup">
+      <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-2xl bg-[#EF233C] flex items-center justify-center text-2xl font-black">+</div><div><p class="font-black tracking-wide text-sm sm:text-base">PMI KABUPATEN BANYUWANGI</p><p class="smallcopy text-[#8999AE]">M. Firdausillah</p></div></div>
+      <div class="grid grid-cols-12 gap-5 items-center">
+        <div class="col-span-7">
+          <p class="kicker text-[#EF233C] mb-4">Bawa pulang lima hal ini</p>
+          <h2 class="display mb-5">KENALI.<br/>LINDUNGI.<br/><span class="text-[#EF233C]">TOLONG.</span></h2>
+          <ul class="bodycopy text-[#EDF2F4] space-y-2">
+            <li>01 — Tetap tenang.</li><li>02 — Amankan korban.</li><li>03 — Lindungi kepala.</li><li>04 — Jangan memasukkan benda ke mulut.</li><li>05 — Pantau pernapasan dan cari bantuan bila perlu.</li>
+          </ul>
+        </div>
+        <div class="col-span-5 relative">
+          <img class="w-full aspect-[4/5] object-cover rounded-[28px] opacity-90" src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=85" alt="Relawan bekerja bersama dalam kegiatan komunitas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none" class="aspect-[4/5] rounded-[28px] bg-[#8999AE]/20 items-center justify-center"><span class="text-7xl">🤝</span></div>
+          <div class="absolute -bottom-3 -left-3 bg-[#EF233C] rounded-xl p-4 shadow-xl"><p class="font-black text-lg sm:text-2xl">SIGAP MENOLONG</p><p class="smallcopy">Tepat bertindak, selamatkan jiwa.</p></div>
+        </div>
+      </div>
+      <div class="flex justify-between items-end border-t border-white/20 pt-4 gap-4"><p class="smallcopy text-[#8999AE]">PMI Kabupaten Banyuwangi — Terima kasih.</p><p class="kicker">08 / 08</p></div>
+      <div class="absolute top-0 right-0 h-full w-2 bg-[#EF233C]"></div>
+    </section>
+  </main>
+
+  <nav class="controls flex items-center justify-center gap-4 sm:gap-6 mt-4 text-white" aria-label="Navigasi presentasi">
+    <button id="prev" class="rounded-full border border-white/30 px-4 py-2 hover:bg-white/10 disabled:opacity-30" aria-label="Slide sebelumnya">← <span class="hidden sm:inline">Sebelumnya</span></button>
+    <div id="dots" class="flex items-center gap-2" aria-label="Pilih slide"></div>
+    <span id="counter" class="number text-sm text-white/70 min-w-12 text-center">1 / 8</span>
+    <button id="next" class="rounded-full bg-[#EF233C] px-4 py-2 font-bold hover:bg-[#D90429]" aria-label="Slide berikutnya"><span class="hidden sm:inline">Berikutnya</span> →</button>
+  </nav>
+  <p class="hint text-white/50 text-xs mt-3 text-center">Gunakan ← → pada keyboard · Tekan F untuk layar penuh · Cetak untuk menyimpan PDF</p>
+  <div class="utility mt-2 flex gap-4"><button id="fullscreen" class="text-xs text-white/70 underline hover:text-white">Layar penuh</button><button id="print" class="text-xs text-white/70 underline hover:text-white">Cetak / Simpan PDF</button></div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = document.getElementById('dots');
+    const counter = document.getElementById('counter');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let current = 0, busy = false;
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' current' : '');
+      dot.setAttribute('aria-label', `Buka slide ${i + 1}`);
+      dot.addEventListener('click', () => show(i));
+      dots.appendChild(dot);
+    });
+    function show(index) {
+      if (busy || index === current || index < 0 || index >= slides.length) return;
+      const old = slides[current], direction = index > current ? 'exit-next' : 'exit-prev';
+      busy = true;
+      old.classList.add(direction);
+      const nextSlide = slides[index];
+      window.setTimeout(() => {
+        old.classList.remove('active', 'exit-next', 'exit-prev');
+        nextSlide.classList.add('active');
+        current = index;
+        [...dots.children].forEach((d, i) => d.classList.toggle('current', i === current));
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        busy = false;
+      }, 170);
+    }
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    document.addEventListener('keydown', e => {
+      if (['ArrowRight', ' '].includes(e.key)) { e.preventDefault(); show(current + 1); }
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key.toLowerCase() === 'f') toggleFullscreen();
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(slides.length - 1);
+    });
+    async function toggleFullscreen() {
+      const target = document.querySelector('.stage');
+      try { if (!document.fullscreenElement) await target.requestFullscreen(); else await document.exitFullscreen(); }
+      catch (error) { console.warn('Mode layar penuh tidak tersedia.', error); }
+    }
+    document.getElementById('fullscreen').addEventListener('click', toggleFullscreen);
+    document.getElementById('print').addEventListener('click', () => window.print());
+    prev.disabled = true;
+  </script>
+</body>
+</html>
