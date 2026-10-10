@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Edukasi | PMI Kabupaten Banyuwangi</title>
+    <meta
+      name="description"
+      content="Daftar materi edukasi pertolongan pertama PMI Kabupaten Banyuwangi."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --off: #edf2f4;
+        --red: #ef233c;
+        --crimson: #d90429;
+        --navy: #2b2d42;
+        --slate: #8999ae;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #171925;
+        color: var(--navy);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      .kicker {
+        font-size: clamp(10px, 1.05vw, 14px);
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+      .display {
+        font-size: clamp(30px, 4.6vw, 64px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+        font-weight: 900;
+      }
+      .bodycopy {
+        font-size: clamp(13px, 1.3vw, 18px);
+        line-height: 1.5;
+      }
+      .smallcopy {
+        font-size: clamp(11px, 1.05vw, 14px);
+        line-height: 1.45;
+      }
+      .accent {
+        height: 6px;
+        width: 64px;
+        background: var(--red);
+        border-radius: 999px;
+      }
+      .card {
+        transition:
+          transform 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 48px -18px rgba(217, 4, 41, 0.45);
+      }
+      .card:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .card {
+          transition: none;
+        }
+        .card:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col items-center px-4 py-8 sm:py-12">
+    <main class="w-full max-w-5xl">
+      <header
+        class="rounded-2xl overflow-hidden shadow-2xl relative"
+        style="background: var(--off)"
+      >
+        <div
+          class="absolute top-0 left-0 right-0 h-1.5"
+          style="background: var(--red)"
+        ></div>
+        <div class="p-6 sm:p-10 text-center flex flex-col items-center">
+          <div>
+            <img
+              src="assets/logo_pmi_banyuwangi.jpg"
+              alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+              class="h-12 sm:h-16 rounded-xl bg-white shadow"
+            />
+          </div>
+          <div class="mt-6 flex flex-col items-center">
+            <!-- <p class="kicker" style="color: var(--crimson)">
+              PMI Kabupaten Banyuwangi
+            </p> -->
+            <h1 class="display mt-2">
+              FIRST <span style="color: var(--red)">AID</span>
+            </h1>
+            <div class="accent mt-4"></div>
+            <p class="bodycopy mt-4 w-2/3" style="color: #55596c">
+              Kumpulan slide pertolongan pertama untuk edukasi dan pelatihan.
+              Pilih salah satu materi di bawah untuk membuka presentasinya.
+            </p>
+            <p class="smallcopy mt-2 italic" style="color: var(--slate)">
+              Brewed With ❤️ by M. Firdausillah
+            </p>
+          </div>
+        </div>
+      </header>
+      <section
+        aria-label="Daftar materi"
+        class="mt-6 grid gap-5 md:grid-cols-3"
+      >
+        <a
+          href="kejang.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >8 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">🧠</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">Kejang</h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Pertolongan Pertama pada Kejang — kenali, lindungi, tolong.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="sesak_nafas_v2.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >9 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">🫁</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">
+              Sesak Napas (baru)
+            </h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Pertolongan Pertama pada Sesak Napas — versi terbaru dengan foto
+              ilustrasi.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="sesak_nafas_v1.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >9 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">💨</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">
+              Sesak Napas (v1)
+            </h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Pertolongan Pertama Sesak Napas — versi awal, ringan tanpa foto.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              PMI Kabupaten Banyuwangi
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="penilaian.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+          title="Materi Penilaian"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >9 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">&#128203;</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">Penilaian</h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Penilaian korban dan lokasi kejadian &mdash; langkah awal
+              pertolongan pertama.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">&rarr;</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="evakuasi.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+          title="Materi Evakuasi"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >8 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">🚨</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">Evakuasi</h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Teknik evakuasi dan pemindahan korban yang aman dan tepat.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="cedera_jaringan_lunak.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+          title="Materi Cedera Jaringan Lunak"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >9 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">🩹</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">
+              Cedera Jaringan Lunak
+            </h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Pertolongan pertama pada luka dan cedera jaringan lunak.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+        <a
+          href="cedera_sistem_otot_rangka.html"
+          class="card rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          style="background: var(--off)"
+          title="Materi Cedera Sistem Otot Rangka"
+        >
+          <div
+            class="px-6 pt-6 pb-4 flex items-center justify-between"
+            style="background: var(--navy)"
+          >
+            <p class="kicker text-white">First aid</p>
+            <span
+              class="text-white text-xs font-black rounded-full px-3 py-1"
+              style="background: var(--red)"
+              >10 slide</span
+            >
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-4xl leading-none">🦴</p>
+            <h2 class="mt-3 text-xl font-black tracking-tight">
+              Cedera Sistem Otot Rangka
+            </h2>
+            <p class="smallcopy mt-2 flex-1" style="color: #55596c">
+              Pertolongan pertama pada patah tulang, sendi, dan otot.
+            </p>
+            <p class="smallcopy mt-2" style="color: var(--slate)">
+              Pemateri: M. Firdausillah
+            </p>
+            <span
+              class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-extrabold text-white"
+              style="background: var(--red)"
+              >Buka materi <span aria-hidden="true">→</span></span
+            >
+          </div>
+        </a>
+      </section>
+      <footer class="mt-8 text-center">
+        <p class="smallcopy" style="color: var(--slate)">
+          PMI Kabupaten Banyuwangi — Edukasi pertolongan pertama
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
