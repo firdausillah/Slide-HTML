@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penilaian | PMI Kabupaten Banyuwangi</title>
+    <meta
+      name="description"
+      content="Materi presentasi Pertolongan Pertama: Penilaian Korban — PMI Kabupaten Banyuwangi."
+    />
+    <title>Penilaian Korban | PMI Kabupaten Banyuwangi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
@@ -12,6 +16,7 @@
         --crimson: #d90429;
         --navy: #2b2d42;
         --slate: #8999ae;
+        --muted: #55596c;
       }
       * {
         box-sizing: border-box;
@@ -25,6 +30,7 @@
           ui-sans-serif,
           system-ui,
           -apple-system,
+          BlinkMacSystemFont,
           "Segoe UI",
           sans-serif;
       }
@@ -42,67 +48,72 @@
       }
       .slide.active {
         display: flex;
-        animation: slideIn 0.42s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+        animation: slideIn 0.35s cubic-bezier(0.2, 0.75, 0.25, 1) both;
       }
       .slide.exit-next {
-        animation: slideOutLeft 0.18s ease-in both;
+        animation: slideOutLeft 0.16s ease-in both;
       }
       .slide.exit-prev {
-        animation: slideOutRight 0.18s ease-in both;
+        animation: slideOutRight 0.16s ease-in both;
       }
       @keyframes slideIn {
         from {
           opacity: 0;
-          transform: translateX(28px) scale(0.99);
+          transform: translateX(20px) scale(0.995);
         }
         to {
           opacity: 1;
-          transform: none;
+          transform: translateX(0) scale(1);
         }
       }
       @keyframes slideOutLeft {
         to {
           opacity: 0;
-          transform: translateX(-18px);
+          transform: translateX(-14px);
         }
       }
       @keyframes slideOutRight {
         to {
           opacity: 0;
-          transform: translateX(18px);
+          transform: translateX(14px);
         }
       }
       .kicker {
-        font-size: clamp(9px, 1.05vw, 14px);
+        font-size: clamp(9px, 1vw, 14px);
         font-weight: 850;
-        letter-spacing: 0.17em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
       }
       .display {
-        font-size: clamp(26px, 4.4vw, 62px);
+        font-size: clamp(30px, 5.2vw, 76px);
         line-height: 0.98;
-        letter-spacing: -0.04em;
+        letter-spacing: -0.05em;
         font-weight: 950;
       }
       .heading {
-        font-size: clamp(22px, 2.8vw, 40px);
-        line-height: 1.05;
-        letter-spacing: -0.03em;
+        font-size: clamp(22px, 3vw, 44px);
+        line-height: 1.04;
+        letter-spacing: -0.035em;
         font-weight: 900;
       }
       .bodycopy {
-        font-size: clamp(12px, 1.35vw, 18px);
-        line-height: 1.5;
+        font-size: clamp(12px, 1.35vw, 19px);
+        line-height: 1.43;
       }
       .smallcopy {
-        font-size: clamp(10px, 1.05vw, 14px);
-        line-height: 1.42;
+        font-size: clamp(10px, 1.04vw, 15px);
+        line-height: 1.4;
       }
       .accent {
-        height: 6px;
-        width: 64px;
+        height: 5px;
+        width: 62px;
         background: var(--red);
         border-radius: 999px;
+      }
+      .photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .dot {
         height: 7px;
@@ -110,6 +121,9 @@
         border-radius: 50%;
         background: #ffffff55;
         transition: all 0.2s;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
       }
       .dot.current {
         width: 23px;
@@ -119,12 +133,51 @@
       .number {
         font-variant-numeric: tabular-nums;
       }
+      .card {
+        background: white;
+        border-radius: 16px;
+        padding: clamp(12px, 1.6vw, 22px);
+      }
+      .iconbox {
+        width: clamp(30px, 3vw, 42px);
+        height: clamp(30px, 3vw, 42px);
+        flex: none;
+        border-radius: 11px;
+        background: #ef233c16;
+        color: var(--crimson);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: clamp(14px, 1.7vw, 23px);
+      }
+      .photo-caption {
+        background: #edf2f4f2;
+        backdrop-filter: blur(8px);
+      }
       @media (max-width: 640px) {
+        body {
+          padding: 8px !important;
+        }
         .controls {
-          gap: 8px;
+          gap: 7px !important;
         }
         .controls button {
-          padding: 7px 10px;
+          padding: 7px 10px !important;
+        }
+        .stage {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16/9;
+        }
+        .slide {
+          padding: 4.5% !important;
+        }
+        .bodycopy {
+          font-size: clamp(10px, 1.7vw, 14px);
+        }
+        .smallcopy {
+          font-size: clamp(9px, 1.3vw, 12px);
         }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -136,7 +189,7 @@
       }
       @media print {
         body {
-          background: #fff;
+          background: white;
           padding: 0 !important;
         }
         .controls,
@@ -165,281 +218,620 @@
   >
     <main
       class="stage rounded-2xl overflow-hidden shadow-2xl"
-      aria-label="Presentasi Penilaian"
+      aria-label="Presentasi Penilaian Korban"
     >
+      <!-- Slide 1 -->
       <section
         class="slide active flex-col justify-between p-[5.5%]"
-        aria-label="Slide 1: Judul"
+        aria-label="Slide 1: Penilaian Korban"
       >
-        <div>
+        <div class="flex items-center gap-3">
           <img
             src="assets/logo_pmi_banyuwangi.jpg"
             alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
             class="h-10 sm:h-14 rounded-xl bg-white"
           />
         </div>
-        <div class="relative z-10">
-          <p class="kicker mb-3" style="color: var(--crimson)">Segera hadir</p>
-          <h1 class="display mb-4">PENILAIAN</h1>
-          <div class="accent mb-4"></div>
-          <p class="bodycopy" style="color: #55596c">
-            Penilaian korban dan lokasi kejadian &#8212; langkah awal
-            pertolongan pertama.
-          </p>
-          <p class="font-extrabold text-sm sm:text-lg mt-4">M. Firdausillah</p>
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-        </div>
         <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+          class="grid grid-cols-12 gap-4 items-center relative z-10 flex-1 py-4"
         >
-          <p class="smallcopy" style="color: var(--slate)">
-            Materi dalam penyusunan &#8212; nantikan versi lengkapnya.
+          <div class="col-span-7">
+            <p class="kicker text-[#D90429] mb-4">Pertolongan pertama</p>
+            <h1 class="display mb-5">
+              PENILAIAN<br />KORBAN<span class="text-[#EF233C]">.</span>
+            </h1>
+            <p class="bodycopy text-[#55596C] max-w-xl">
+              Mengenali kondisi korban dan menentukan prioritas pertolongan.
+            </p>
+            <div class="accent mt-6"></div>
+          </div>
+          <div class="col-span-5 h-full min-h-0 relative">
+            <img
+              class="photo rounded-[26px]"
+              src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=85"
+              alt="Petugas medis sedang melakukan pemeriksaan"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=85'
+              "
+            />
+            <div
+              class="absolute -bottom-3 -left-3 bg-[#EF233C] text-white rounded-xl px-4 py-3 shadow-lg"
+            >
+              <p class="kicker">First aid</p>
+              <p class="font-black text-base sm:text-lg">
+                Aman · Nilai · Tolong
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between items-end relative z-10">
+          <p class="smallcopy text-[#8999AE]">
+            Cepat, tepat, aman, dan manusiawi.
           </p>
           <p class="kicker">01 / 09</p>
         </div>
+        <div
+          class="absolute -right-20 -top-24 w-64 h-64 rounded-full bg-[#EF233C]/10"
+        ></div>
+        <div class="absolute bottom-0 left-0 h-2 w-1/3 bg-[#EF233C]"></div>
       </section>
+
+      <!-- Slide 2 -->
       <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 2: Segera hadir"
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 2: Tujuan Penilaian"
       >
         <div>
+          <p class="kicker text-[#D90429] mb-3">
+            01 — Mengapa penilaian penting?
+          </p>
+          <h2 class="heading">Tujuan penilaian korban</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col justify-center gap-3">
+            <div class="card flex gap-4 items-center">
+              <div class="iconbox">01</div>
+              <p class="bodycopy font-semibold">Mengetahui kondisi korban.</p>
+            </div>
+            <div class="card flex gap-4 items-center">
+              <div class="iconbox">02</div>
+              <p class="bodycopy font-semibold">
+                Mengenali keadaan yang mengancam nyawa.
+              </p>
+            </div>
+            <div class="card flex gap-4 items-center">
+              <div class="iconbox">03</div>
+              <p class="bodycopy font-semibold">
+                Menentukan prioritas pertolongan.
+              </p>
+            </div>
+            <div class="card flex gap-4 items-center">
+              <div class="iconbox">04</div>
+              <p class="bodycopy font-semibold">
+                Menentukan tindakan sesuai kebutuhan dan kompetensi penolong.
+              </p>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85"
+              alt="Tenaga kesehatan berdiskusi dalam lingkungan medis"
+            />
+            <div
+              class="absolute bottom-3 left-3 right-3 photo-caption rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Penilaian membantu penolong mengambil keputusan yang terarah.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">
+          Nilai kondisi terlebih dahulu, lalu tentukan tindakan yang aman dan
+          sesuai kemampuan.
+        </p>
+      </section>
+
+      <!-- Slide 3 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 3: Penilaian Keadaan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">
+            02 — Sebelum mendekati korban
+          </p>
+          <h2 class="heading">Nilai keadaan di sekitar</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-4 flex-1 min-h-0">
+          <div class="col-span-7 grid grid-cols-2 gap-3">
+            <div class="card flex flex-col justify-between">
+              <div class="text-2xl mb-3">🛡️</div>
+              <div>
+                <h3 class="font-black text-base sm:text-xl mb-1">Keamanan</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Pastikan lokasi aman bagi penolong, korban, dan orang sekitar.
+                </p>
+              </div>
+            </div>
+            <div class="card flex flex-col justify-between">
+              <div class="text-2xl mb-3">👥</div>
+              <div>
+                <h3 class="font-black text-base sm:text-xl mb-1">
+                  Jumlah korban
+                </h3>
+                <p class="smallcopy text-[#55596C]">
+                  Tentukan kebutuhan bantuan tambahan.
+                </p>
+              </div>
+            </div>
+            <div class="card flex flex-col justify-between">
+              <div class="text-2xl mb-3">🔎</div>
+              <div>
+                <h3 class="font-black text-base sm:text-xl mb-1">
+                  Penyebab kejadian
+                </h3>
+                <p class="smallcopy text-[#55596C]">
+                  Identifikasi kemungkinan penyebab cedera.
+                </p>
+              </div>
+            </div>
+            <div class="card flex flex-col justify-between">
+              <div class="text-2xl mb-3">⚠️</div>
+              <div>
+                <h3 class="font-black text-base sm:text-xl mb-1">Bahaya</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Waspadai api, listrik, lalu lintas, dan bahan berbahaya.
+                </p>
+              </div>
+            </div>
+            <div class="card col-span-2 flex gap-3 items-center">
+              <div class="iconbox">＋</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">Minta bantuan</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Aktifkan bantuan tambahan bila diperlukan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85"
+              alt="Tim berdiskusi dan berkoordinasi"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 bg-[#2B2D42]/95 text-white rounded-xl p-4"
+            >
+              <p class="kicker text-[#EF233C] mb-1">Prinsip keselamatan</p>
+              <p class="bodycopy font-bold">
+                Jangan menjadi korban berikutnya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 4: Penilaian Awal"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">
+            03 — Prioritaskan yang mengancam nyawa
+          </p>
+          <h2 class="heading">Penilaian awal</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col justify-center gap-3">
+            <div class="flex gap-3 items-start">
+              <span
+                class="w-9 h-9 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black"
+                >1</span
+              >
+              <div>
+                <h3 class="font-black text-base sm:text-xl">Respons</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Periksa kesadaran korban.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span
+                class="w-9 h-9 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black"
+                >2</span
+              >
+              <div>
+                <h3 class="font-black text-base sm:text-xl">Jalan napas</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Pastikan jalan napas terbuka.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span
+                class="w-9 h-9 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black"
+                >3</span
+              >
+              <div>
+                <h3 class="font-black text-base sm:text-xl">Pernapasan</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Nilai apakah korban bernapas normal.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span
+                class="w-9 h-9 shrink-0 rounded-full bg-[#EF233C] text-white flex items-center justify-center font-black"
+                >4</span
+              >
+              <div>
+                <h3 class="font-black text-base sm:text-xl">
+                  Perdarahan hebat
+                </h3>
+                <p class="smallcopy text-[#55596C]">
+                  Kenali dan kendalikan segera.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=85"
+              alt="Petugas kesehatan memeriksa pasien"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 bg-[#2B2D42]/95 text-white rounded-xl p-4"
+            >
+              <p class="kicker text-[#EF233C] mb-2">Tindakan darurat</p>
+              <p class="smallcopy font-semibold">
+                Jika korban tidak merespons dan tidak bernapas normal: aktifkan
+                bantuan darurat, minta AED, dan mulai RJP sesuai pelatihan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 5: Pemeriksaan Fisik"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">
+            04 — Periksa dengan sistematis
+          </p>
+          <h2 class="heading">Pemeriksaan fisik</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 grid grid-cols-2 gap-3">
+            <div class="card">
+              <div class="iconbox mb-3">01</div>
+              <h3 class="font-black text-base sm:text-xl mb-2">
+                Kepala dan leher
+              </h3>
+              <p class="smallcopy text-[#55596C]">
+                Perhatikan luka, benjolan, atau nyeri.
+              </p>
+            </div>
+            <div class="card">
+              <div class="iconbox mb-3">02</div>
+              <h3 class="font-black text-base sm:text-xl mb-2">
+                Dada dan perut
+              </h3>
+              <p class="smallcopy text-[#55596C]">
+                Perhatikan luka, nyeri, atau gangguan pernapasan.
+              </p>
+            </div>
+            <div class="card">
+              <div class="iconbox mb-3">03</div>
+              <h3 class="font-black text-base sm:text-xl mb-2">Panggul</h3>
+              <p class="smallcopy text-[#55596C]">
+                Waspadai nyeri atau dugaan cedera.
+              </p>
+            </div>
+            <div class="card">
+              <div class="iconbox mb-3">04</div>
+              <h3 class="font-black text-base sm:text-xl mb-2">
+                Anggota gerak
+              </h3>
+              <p class="smallcopy text-[#55596C]">
+                Amati luka, bengkak, perdarahan, atau perubahan bentuk.
+              </p>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=900&q=85"
+              alt="Visual edukasi kesehatan"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 bg-[#EF233C]/95 text-white rounded-xl p-4"
+            >
+              <p class="kicker mb-1">Ingat</p>
+              <p class="smallcopy font-bold">
+                Lakukan sesuai kompetensi. Hindari gerakan yang tidak perlu jika
+                dicurigai cedera tulang belakang.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 6: Riwayat Penderita"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">05 — Gali informasi penting</p>
+          <h2 class="heading">Riwayat penderita: SAMPLE</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 grid grid-cols-2 gap-3">
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">S</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">
+                  Signs & Symptoms
+                </h3>
+                <p class="smallcopy text-[#55596C]">Tanda dan gejala.</p>
+              </div>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">A</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">Allergies</h3>
+                <p class="smallcopy text-[#55596C]">Riwayat alergi.</p>
+              </div>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">M</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">Medications</h3>
+                <p class="smallcopy text-[#55596C]">Obat yang digunakan.</p>
+              </div>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">P</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">
+                  Past Medical History
+                </h3>
+                <p class="smallcopy text-[#55596C]">Riwayat penyakit.</p>
+              </div>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">L</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">
+                  Last Oral Intake
+                </h3>
+                <p class="smallcopy text-[#55596C]">
+                  Terakhir makan atau minum.
+                </p>
+              </div>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="text-3xl font-black text-[#EF233C]">E</div>
+              <div>
+                <h3 class="font-black text-base sm:text-lg">Events</h3>
+                <p class="smallcopy text-[#55596C]">
+                  Kejadian sebelum kondisi korban.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=85"
+              alt="Tenaga medis berbicara dengan pasien"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 photo-caption rounded-xl p-4"
+            >
+              <p class="kicker text-[#D90429] mb-1">Cara bertanya</p>
+              <p class="bodycopy font-bold">
+                Tanyakan kepada korban jika sadar, atau kepada saksi jika
+                diperlukan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 7: Pemeriksaan Berkala"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">
+            06 — Pantau dari waktu ke waktu
+          </p>
+          <h2 class="heading">Pemeriksaan berkala</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col justify-center gap-3">
+            <div class="card flex gap-3 items-start">
+              <div class="iconbox">↻</div>
+              <p class="bodycopy">Periksa kembali respons dan pernapasan.</p>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="iconbox">＋</div>
+              <p class="bodycopy">Amati perdarahan dan keluhan.</p>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="iconbox">◉</div>
+              <p class="bodycopy">
+                Perhatikan perubahan warna kulit dan tingkat kesadaran.
+              </p>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="iconbox">✓</div>
+              <p class="bodycopy">Evaluasi efektivitas pertolongan.</p>
+            </div>
+            <div class="card flex gap-3 items-start">
+              <div class="iconbox">◷</div>
+              <p class="bodycopy">Catat waktu dan perubahan kondisi.</p>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=85"
+              alt="Peralatan pemantauan kondisi kesehatan"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 bg-[#2B2D42]/95 text-white rounded-xl p-4"
+            >
+              <p class="kicker text-[#EF233C] mb-1">Jangan menunda</p>
+              <p class="bodycopy font-bold">
+                Pantau terus-menerus. Segera tangani jika kondisi memburuk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 8: Pelaporan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">07 — Serah terima yang jelas</p>
+          <h2 class="heading">Pelaporan kondisi korban</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col justify-center gap-3">
+            <p class="bodycopy text-[#55596C] mb-1">
+              Sampaikan informasi secara jelas dan sistematis:
+            </p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">01</p>
+                <p class="bodycopy font-semibold">
+                  Identitas atau perkiraan usia korban, jika diketahui.
+                </p>
+              </div>
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">02</p>
+                <p class="bodycopy font-semibold">Waktu dan lokasi kejadian.</p>
+              </div>
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">03</p>
+                <p class="bodycopy font-semibold">
+                  Mekanisme kejadian atau keluhan utama.
+                </p>
+              </div>
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">04</p>
+                <p class="bodycopy font-semibold">
+                  Hasil penilaian dan perubahan kondisi.
+                </p>
+              </div>
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">05</p>
+                <p class="bodycopy font-semibold">
+                  Tindakan yang telah diberikan.
+                </p>
+              </div>
+              <div class="card">
+                <p class="smallcopy text-[#8999AE] mb-1">06</p>
+                <p class="bodycopy font-semibold">
+                  Respons korban terhadap pertolongan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=900&q=85"
+              alt="Petugas kesehatan mencatat informasi pasien"
+            />
+            <div
+              class="absolute inset-x-3 bottom-3 bg-[#EF233C]/95 text-white rounded-xl p-4"
+            >
+              <p class="kicker mb-1">Saat serah terima</p>
+              <p class="bodycopy font-bold">
+                Laporkan hasil penilaian dan tindakan kepada petugas kesehatan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 9 -->
+      <section
+        class="slide flex-col justify-between p-[5.5%] bg-[#2B2D42] text-white"
+        aria-label="Slide 9: Kesimpulan"
+      >
+        <div class="flex items-center gap-3">
           <img
             src="assets/logo_pmi_banyuwangi.jpg"
             alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
             class="h-10 sm:h-14 rounded-xl bg-white"
           />
         </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 2 &#8212; Penilaian.
-          </p>
+        <div class="grid grid-cols-12 gap-5 items-center flex-1 py-4">
+          <div class="col-span-7">
+            <p class="kicker text-[#EF233C] mb-4">Kesimpulan</p>
+            <h2 class="display mb-5">
+              NILAI.<br />PRIORITAS.<br /><span class="text-[#EF233C]"
+                >TOLONG.</span
+              >
+            </h2>
+            <p class="bodycopy text-[#EDF2F4] mb-4">
+              Penilaian yang tepat membantu menyelamatkan nyawa.
+            </p>
+            <ul class="bodycopy text-[#EDF2F4] space-y-2">
+              <li>01 — Aman sebelum menolong.</li>
+              <li>02 — Prioritaskan kondisi yang mengancam nyawa.</li>
+              <li>03 — Periksa secara sistematis.</li>
+              <li>04 — Pantau kondisi secara berkala.</li>
+              <li>05 — Laporkan hasil dan tindakan dengan jelas.</li>
+            </ul>
+          </div>
+          <div class="col-span-5 relative">
+            <img
+              class="w-full aspect-[4/5] object-cover rounded-[26px] opacity-90"
+              src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=900&q=85"
+              alt="Relawan bekerja bersama dalam kegiatan komunitas"
+            />
+            <div
+              class="absolute -bottom-3 -left-3 bg-[#EF233C] rounded-xl p-4 shadow-xl"
+            >
+              <p class="font-black text-base sm:text-2xl">SIGAP MENOLONG</p>
+              <p class="smallcopy">Cepat, tepat, aman, dan manusiawi.</p>
+            </div>
+          </div>
         </div>
         <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+          class="flex justify-between items-end border-t border-white/20 pt-4 gap-4"
         >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">02 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 3: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 3 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">03 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 4: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 4 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">04 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 5: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 5 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">05 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 6: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 6 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">06 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 7: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 7 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">07 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 8: Segera hadir"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#128203;</p>
-          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
-          <h2 class="heading">SEGERA HADIR</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Slide 8 &#8212; Penilaian.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi
-          </p>
-          <p class="kicker">08 / 09</p>
-        </div>
-      </section>
-      <section
-        class="slide flex-col justify-between p-[5.5%]"
-        aria-label="Slide 9: Penutup"
-      >
-        <div>
-          <img
-            src="assets/logo_pmi_banyuwangi.jpg"
-            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
-            class="h-10 sm:h-14 rounded-xl bg-white"
-          />
-        </div>
-        <div
-          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
-        >
-          <p class="text-5xl">&#129309;</p>
-          <p class="kicker" style="color: var(--crimson)">Penutup</p>
-          <h2 class="heading">TERIMA KASIH</h2>
-          <p class="bodycopy" style="color: #55596c">
-            Materi Penilaian segera hadir. Pantau halaman daftar untuk versi
-            lengkapnya.
-          </p>
-        </div>
-        <div
-          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
-        >
-          <p class="smallcopy" style="color: var(--slate)">
-            PMI Kabupaten Banyuwangi &#8212; Terima kasih.
+          <p class="smallcopy text-[#8999AE]">
+            PMI Kabupaten Banyuwangi · Terima kasih.
           </p>
           <p class="kicker">09 / 09</p>
         </div>
+        <div class="absolute top-0 right-0 h-full w-2 bg-[#EF233C]"></div>
       </section>
     </main>
     <nav
@@ -451,7 +843,7 @@
         class="rounded-full border border-white/30 px-4 py-2 hover:bg-white/10 disabled:opacity-30"
         aria-label="Slide sebelumnya"
       >
-        &#8592; <span class="hidden sm:inline">Sebelumnya</span>
+        ← <span class="hidden sm:inline">Sebelumnya</span>
       </button>
       <div
         id="dots"
@@ -465,16 +857,15 @@
       >
       <button
         id="next"
-        class="rounded-full px-4 py-2 font-bold"
-        style="background: var(--red)"
+        class="rounded-full bg-[#EF233C] px-4 py-2 font-bold hover:bg-[#D90429]"
         aria-label="Slide berikutnya"
       >
-        <span class="hidden sm:inline">Berikutnya</span> &#8594;
+        <span class="hidden sm:inline">Berikutnya</span> →
       </button>
     </nav>
     <p class="hint text-white/50 text-xs mt-3 text-center">
-      Gunakan &#8592; &#8594; pada keyboard &#183; Tekan F untuk layar penuh
-      &#183; Cetak untuk menyimpan PDF
+      Gunakan ← → pada keyboard · Tekan F untuk layar penuh · Cetak untuk
+      menyimpan PDF
     </p>
     <div class="utility mt-2 flex gap-4">
       <a
@@ -486,9 +877,8 @@
         id="fullscreen"
         class="text-xs text-white/70 underline hover:text-white"
       >
-        Layar penuh
-      </button>
-      <button
+        Layar penuh</button
+      ><button
         id="print"
         class="text-xs text-white/70 underline hover:text-white"
       >
@@ -497,39 +887,39 @@
     </div>
     <script>
       const slides = [...document.querySelectorAll(".slide")];
-      const dots = document.getElementById("dots");
-      const counter = document.getElementById("counter");
-      const prev = document.getElementById("prev");
-      const next = document.getElementById("next");
+      const dots = document.getElementById("dots"),
+        counter = document.getElementById("counter"),
+        prev = document.getElementById("prev"),
+        next = document.getElementById("next");
       let current = 0,
         busy = false;
       slides.forEach((_, i) => {
-        const d = document.createElement("button");
-        d.className = "dot" + (i === 0 ? " current" : "");
-        d.setAttribute("aria-label", "Buka slide " + (i + 1));
-        d.addEventListener("click", () => show(i));
-        dots.appendChild(d);
+        const dot = document.createElement("button");
+        dot.className = "dot" + (i === 0 ? " current" : "");
+        dot.setAttribute("aria-label", `Buka slide ${i + 1}`);
+        dot.addEventListener("click", () => show(i));
+        dots.appendChild(dot);
       });
       function show(index) {
         if (busy || index === current || index < 0 || index >= slides.length)
           return;
         const old = slides[current],
-          dir = index > current ? "exit-next" : "exit-prev";
+          direction = index > current ? "exit-next" : "exit-prev";
         busy = true;
-        old.classList.add(dir);
-        const ns = slides[index];
+        old.classList.add(direction);
+        const target = slides[index];
         window.setTimeout(() => {
           old.classList.remove("active", "exit-next", "exit-prev");
-          ns.classList.add("active");
+          target.classList.add("active");
           current = index;
           [...dots.children].forEach((d, i) =>
             d.classList.toggle("current", i === current),
           );
-          counter.textContent = current + 1 + " / " + slides.length;
+          counter.textContent = `${current + 1} / ${slides.length}`;
           prev.disabled = current === 0;
           next.disabled = current === slides.length - 1;
           busy = false;
-        }, 170);
+        }, 160);
       }
       prev.addEventListener("click", () => show(current - 1));
       next.addEventListener("click", () => show(current + 1));
@@ -544,12 +934,12 @@
         if (e.key === "End") show(slides.length - 1);
       });
       async function toggleFullscreen() {
-        const t = document.querySelector(".stage");
+        const target = document.querySelector(".stage");
         try {
-          if (!document.fullscreenElement) await t.requestFullscreen();
+          if (!document.fullscreenElement) await target.requestFullscreen();
           else await document.exitFullscreen();
-        } catch (err) {
-          console.warn("Mode layar penuh tidak tersedia.", err);
+        } catch (error) {
+          console.warn("Mode layar penuh tidak tersedia.", error);
         }
       }
       document

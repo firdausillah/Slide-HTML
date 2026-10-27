@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171925" />
+    <title>
+      Prinsip Dasar Gerakan Palang Merah dan Bulan Sabit Merah Internasional
+    </title>
+    <!-- Foto ilustrasi menggunakan URL images.unsplash.com; penggunaan mengikuti Unsplash License: https://unsplash.com/license -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --off: #edf2f4;
+        --red: #ef233c;
+        --crimson: #d90429;
+        --navy: #2b2d42;
+        --slate: #8999ae;
+        --ink: #55596c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #171925;
+        color: var(--navy);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      .stage {
+        width: min(100vw, calc(100vh * 16 / 9));
+        aspect-ratio: 16 / 9;
+      }
+      .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        background: var(--off);
+      }
+      .slide.active {
+        display: flex;
+        animation: slideIn 0.42s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+      }
+      .slide.exit-next {
+        animation: slideOutLeft 0.18s ease-in both;
+      }
+      .slide.exit-prev {
+        animation: slideOutRight 0.18s ease-in both;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(28px) scale(0.99);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+      @keyframes slideOutLeft {
+        to {
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+      }
+      @keyframes slideOutRight {
+        to {
+          opacity: 0;
+          transform: translateX(18px);
+        }
+      }
+      .kicker {
+        font-size: clamp(9px, 1.05vw, 14px);
+        font-weight: 850;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+      .display {
+        font-size: clamp(30px, 4.65vw, 68px);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+        font-weight: 950;
+      }
+      .heading {
+        font-size: clamp(23px, 2.8vw, 42px);
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+        font-weight: 900;
+      }
+      .bodycopy {
+        font-size: clamp(12px, 1.25vw, 18px);
+        line-height: 1.45;
+      }
+      .smallcopy {
+        font-size: clamp(10px, 0.98vw, 14px);
+        line-height: 1.42;
+      }
+      .accent {
+        height: 6px;
+        width: 64px;
+        background: var(--red);
+        border-radius: 999px;
+      }
+      .photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .dot {
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        background: #ffffff55;
+        transition: all 0.2s;
+      }
+      .dot.current {
+        width: 23px;
+        border-radius: 99px;
+        background: var(--red);
+      }
+      .number {
+        font-variant-numeric: tabular-nums;
+      }
+      .principle-number {
+        font-size: clamp(42px, 7vw, 94px);
+        font-weight: 950;
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+        color: #ef233c;
+      }
+      @media (max-width: 640px) {
+        .controls {
+          gap: 8px;
+        }
+        .controls button {
+          padding: 7px 10px;
+        }
+        .stage {
+          width: 100vw;
+          aspect-ratio: auto;
+          min-height: 70vh;
+        }
+        .slide {
+          min-height: 70vh;
+          height: auto;
+        }
+        .slide > .slide-content {
+          min-height: 70vh;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .slide.active,
+        .slide.exit-next,
+        .slide.exit-prev {
+          animation: none;
+        }
+      }
+      @media print {
+        body {
+          background: white;
+          padding: 0 !important;
+        }
+        .controls,
+        .hint,
+        .utility {
+          display: none !important;
+        }
+        .stage {
+          width: 100%;
+          height: auto;
+          aspect-ratio: auto;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+        }
+        .slide {
+          display: flex !important;
+          aspect-ratio: 16/9;
+          page-break-after: always;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center justify-center p-3 sm:p-5"
+  >
+    <main
+      class="stage rounded-2xl overflow-hidden shadow-2xl"
+      aria-label="Prinsip Dasar Gerakan Palang Merah dan Bulan Sabit Merah Internasional"
+    >
+      <!-- Slide 1 -->
+      <section
+        class="slide active flex-col justify-between p-[5.5%]"
+        aria-label="Slide 1: Mengenal Prinsip Dasar"
+      >
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <img
+              src="assets/logo_pmi_banyuwangi.jpg"
+              alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+              class="h-10 sm:h-14 rounded-xl bg-white"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 items-center relative z-10">
+          <div class="col-span-8">
+            <p class="kicker text-[#D90429] mb-4">Panduan nilai dan tindakan</p>
+            <h1 class="display mb-5">
+              PRINSIP<br />
+              DASAR GERAKAN<br /><span class="text-[#EF233C]">KEMANUSIAAN</span>
+            </h1>
+            <p class="bodycopy text-[#55596C] mb-5">
+              Palang Merah dan Bulan Sabit Merah Internasional
+            </p>
+            <p class="font-extrabold text-sm sm:text-lg">
+              Materi Pendidikan PMR
+            </p>
+            <p class="smallcopy text-[#8999AE]">
+              Kenali nilai, pahami makna, terapkan dalam tindakan.
+            </p>
+          </div>
+          <div class="col-span-4 h-full min-h-0 relative">
+            <img
+              class="photo rounded-[28px]"
+              src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=900&q=85"
+              alt="Relawan bekerja bersama dalam kegiatan komunitas"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-[28px] bg-[#2B2D42] items-center justify-center text-white"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=85"
+                alt="Relawan bekerja bersama"
+                class="photo rounded-[28px]"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute -bottom-3 -left-3 bg-[#EF233C] text-white rounded-xl px-4 py-3 shadow-lg"
+            >
+              <p class="kicker">One movement</p>
+              <p class="font-black text-lg">Humanity first</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between items-end relative z-10">
+          <p class="smallcopy text-[#8999AE]">
+            Menolong dengan adil, netral, dan penuh kepedulian.
+          </p>
+          <p class="kicker">01 / 08</p>
+        </div>
+        <div
+          class="absolute -right-20 -top-24 w-64 h-64 rounded-full bg-[#EF233C]/10"
+        ></div>
+        <div class="absolute bottom-0 left-0 h-2 w-1/3 bg-[#EF233C]"></div>
+      </section>
+
+      <!-- Slide 2 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 2: Kemanusiaan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">01 — Humanity</p>
+          <h2 class="heading">Kemanusiaan</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+              <p class="bodycopy">
+                Mencegah dan meringankan penderitaan manusia, melindungi
+                kehidupan dan kesehatan, serta menghormati martabat manusia
+                tanpa membedakan latar belakang.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Contoh tindakan</p>
+              <ul class="bodycopy space-y-2">
+                <li>
+                  — Menolong teman yang pingsan atau terluka tanpa mengejeknya.
+                </li>
+                <li>— Memberikan pertolongan pertama sesuai kemampuan.</li>
+                <li>— Menggalang bantuan untuk korban bencana.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=85"
+              alt="Visual edukasi kesehatan"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=85"
+                alt="Relawan membantu masyarakat"
+                class="photo rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Menolong sesama adalah wujud kepedulian terhadap kemanusiaan.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">01 dari 07 prinsip dasar</p>
+      </section>
+
+      <!-- Slide 3 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 3: Kesamaan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">02 — Impartiality</p>
+          <h2 class="heading">Kesamaan</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+              <p class="bodycopy">
+                Memberikan bantuan tanpa membedakan suku, agama, status sosial,
+                jenis kelamin, atau pandangan politik. Prioritas ditentukan
+                berdasarkan tingkat kebutuhan dan urgensi.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Contoh tindakan</p>
+              <ul class="bodycopy space-y-2">
+                <li>— Menolong siswa terluka meskipun bukan teman dekat.</li>
+                <li>— Mendahulukan korban yang kondisinya paling gawat.</li>
+                <li>— Membagikan bantuan sesuai kebutuhan keluarga.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=85"
+              alt="Kegiatan kepedulian sosial"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=85"
+                alt="Kegiatan kepedulian sosial"
+                class="photo rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Menolong berdasarkan kebutuhan, bukan kedekatan pribadi.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">02 dari 07 prinsip dasar</p>
+      </section>
+
+      <!-- Slide 4 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 4: Kenetralan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">03 — Neutrality</p>
+          <h2 class="heading">Kenetralan</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+              <p class="bodycopy">
+                Tidak memihak dalam pertentangan agar Gerakan tetap dipercaya
+                oleh semua pihak dan dapat menjalankan misi kemanusiaan.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Contoh tindakan</p>
+              <ul class="bodycopy space-y-2">
+                <li>— Menolong kedua siswa yang terluka saat perkelahian.</li>
+                <li>— Tidak menyebarkan provokasi atau memperkeruh konflik.</li>
+                <li>— Fokus memberi pertolongan tanpa memihak kelompok.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=800&q=85"
+              alt="Orang bekerja sama"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=85"
+                alt="Relawan bekerja bersama"
+                class="photo rounded-[28px]"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Pertolongan bukan alat untuk memihak.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">03 dari 07 prinsip dasar</p>
+      </section>
+
+      <!-- Slide 5 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 5: Kemandirian"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">04 — Independence</p>
+          <h2 class="heading">Kemandirian</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+              <p class="bodycopy">
+                Gerakan tetap mandiri dalam menjalankan misi kemanusiaan,
+                meskipun bekerja sama dengan pemerintah atau pihak lain.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Contoh tindakan</p>
+              <ul class="bodycopy space-y-2">
+                <li>— Bekerja sama dengan sekolah dalam simulasi bencana.</li>
+                <li>— Menentukan prioritas sesuai kebutuhan korban.</li>
+                <li>— Menyampaikan kebutuhan korban secara jujur.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=85"
+              alt="Relawan dalam kegiatan sosial"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=85"
+                alt="Relawan dalam kegiatan sosial"
+                class="photo rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Kerja sama penting, prinsip kemanusiaan tetap dijaga.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">04 dari 07 prinsip dasar</p>
+      </section>
+
+      <!-- Slide 6 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 6: Kesukarelaan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">05 — Voluntary service</p>
+          <h2 class="heading">Kesukarelaan</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Pengertian</p>
+              <p class="bodycopy">
+                Memberikan pelayanan kemanusiaan secara sukarela dan tidak
+                didorong oleh keinginan memperoleh keuntungan pribadi.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Contoh tindakan</p>
+              <ul class="bodycopy space-y-2">
+                <li>— Menyiapkan pos pertolongan pertama di sekolah.</li>
+                <li>— Mengikuti penggalangan bantuan bencana.</li>
+                <li>
+                  — Membantu warga membersihkan lingkungan setelah banjir.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 relative min-h-0">
+            <img
+              class="photo rounded-2xl"
+              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=85"
+              alt="Relawan membantu masyarakat"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+              "
+            />
+            <div
+              style="display: none"
+              class="absolute inset-0 rounded-2xl bg-[#8999AE]/30 items-center justify-center"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=85"
+                alt="Relawan membantu masyarakat"
+                class="photo rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 left-3 right-3 bg-[#EDF2F4]/95 rounded-xl p-3"
+            >
+              <p class="smallcopy font-bold">
+                Menolong dengan tulus, bukan semata-mata demi imbalan.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">05 dari 07 prinsip dasar</p>
+      </section>
+
+      <!-- Slide 7 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-4"
+        aria-label="Slide 7: Kesatuan dan Kesemestaan"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">06–07 — Unity & Universality</p>
+          <h2 class="heading">Kesatuan & Kesemestaan</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 flex-1 min-h-0">
+          <div class="bg-white rounded-2xl p-5 flex flex-col gap-3">
+            <div class="flex items-center gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=120&h=120&q=85"
+                alt="Kerja sama relawan"
+                class="w-12 h-12 rounded-xl object-cover"
+                loading="lazy"
+              />
+              <div>
+                <p class="kicker text-[#D90429]">06 — Unity</p>
+                <h3 class="font-black text-xl sm:text-2xl">Kesatuan</h3>
+              </div>
+            </div>
+            <p class="bodycopy">
+              Dalam satu negara hanya terdapat satu Perhimpunan Palang Merah
+              atau Bulan Sabit Merah yang terbuka bagi semua orang dan
+              berkegiatan di seluruh wilayah negara.
+            </p>
+            <p class="kicker text-[#8999AE]">Contoh tindakan</p>
+            <ul class="smallcopy space-y-2">
+              <li>— Anggota PMR lintas kelas bekerja sama.</li>
+              <li>— Mengikutsertakan semua anggota.</li>
+              <li>— Berkoordinasi dengan PMI setempat.</li>
+            </ul>
+            <div class="mt-auto bg-[#EDF2F4] rounded-xl p-3">
+              <p class="smallcopy font-bold">
+                Bersatu dan bekerja sama untuk tujuan kemanusiaan.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-[#2B2D42] text-white rounded-2xl p-5 flex flex-col gap-3"
+          >
+            <div class="flex items-center gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=120&h=120&q=85"
+                alt="Solidaritas kemanusiaan"
+                class="w-12 h-12 rounded-xl object-cover"
+                loading="lazy"
+              />
+              <div>
+                <p class="kicker text-[#EF233C]">07 — Universality</p>
+                <h3 class="font-black text-xl sm:text-2xl">Kesemestaan</h3>
+              </div>
+            </div>
+            <p class="bodycopy">
+              Gerakan bersifat mendunia. Semua perhimpunan nasional berkedudukan
+              setara dan bertanggung jawab untuk saling membantu.
+            </p>
+            <p class="kicker text-[#EF233C]">Contoh tindakan</p>
+            <ul class="smallcopy space-y-2">
+              <li>— Mendukung bantuan bagi korban bencana di daerah lain.</li>
+              <li>— Mengikuti solidaritas lintas daerah.</li>
+              <li>— Berbagi pengetahuan kegiatan PMR.</li>
+            </ul>
+            <div class="mt-auto bg-white/10 rounded-xl p-3">
+              <p class="smallcopy font-bold">
+                Kepedulian tidak dibatasi wilayah atau negara.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="smallcopy text-[#8999AE]">
+          Dua prinsip yang memperkuat kerja bersama dalam satu gerakan global.
+        </p>
+      </section>
+
+      <!-- Slide 8 -->
+      <section
+        class="slide flex-col p-[5.5%] gap-5"
+        aria-label="Slide 8: Penerapan Prinsip Dasar"
+      >
+        <div>
+          <p class="kicker text-[#D90429] mb-3">Diskusi & refleksi</p>
+          <h2 class="heading">Terapkan prinsip dalam tindakan nyata</h2>
+          <div class="accent mt-4"></div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 flex-1 min-h-0">
+          <div class="col-span-7 flex flex-col gap-4">
+            <div class="bg-white rounded-2xl p-5">
+              <p class="kicker text-[#8999AE] mb-2">Studi kasus</p>
+              <p class="bodycopy">
+                Saat pertandingan antarkelas, dua siswa dari tim yang bersaing
+                mengalami cedera. Salah satunya teman dekatmu, sedangkan yang
+                lain pernah bermusuhan denganmu.
+              </p>
+            </div>
+            <div class="bg-[#2B2D42] text-white rounded-2xl p-5 flex-1">
+              <p class="kicker text-[#EF233C] mb-3">Pertanyaan diskusi</p>
+              <ol class="bodycopy space-y-2 list-decimal list-inside">
+                <li>Apa tindakan anggota PMR?</li>
+                <li>Prinsip dasar apa saja yang diterapkan?</li>
+                <li>Bagaimana jika salah satu korban lebih serius?</li>
+              </ol>
+            </div>
+          </div>
+          <div
+            class="col-span-5 bg-[#EF233C] text-white rounded-2xl p-5 flex flex-col justify-between"
+          >
+            <div>
+              <p class="kicker mb-3">Kesimpulan</p>
+              <h3 class="font-black text-2xl sm:text-3xl mb-4">
+                Nilai kemanusiaan harus terlihat dalam tindakan.
+              </h3>
+              <p class="bodycopy">
+                Menjadi anggota PMR bukan sekadar memakai atribut atau mengikuti
+                kegiatan, tetapi menerapkan nilai kemanusiaan dalam tindakan
+                nyata.
+              </p>
+            </div>
+            <div class="border-t border-white/30 pt-4 mt-4">
+              <p class="kicker mb-2">Ingat 7 prinsip</p>
+              <p class="smallcopy">
+                Kemanusiaan · Kesamaan · Kenetralan · Kemandirian · Kesukarelaan
+                · Kesatuan · Kesemestaan
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav
+      class="controls flex items-center justify-center gap-4 sm:gap-6 mt-4 text-white"
+      aria-label="Navigasi presentasi"
+    >
+      <button
+        id="prev"
+        class="rounded-full border border-white/30 px-4 py-2 hover:bg-white/10 disabled:opacity-30"
+        aria-label="Slide sebelumnya"
+      >
+        ← <span class="hidden sm:inline">Sebelumnya</span>
+      </button>
+      <div
+        id="dots"
+        class="flex items-center gap-2"
+        aria-label="Pilih slide"
+      ></div>
+      <span
+        id="counter"
+        class="number text-sm text-white/70 min-w-12 text-center"
+        >1 / 8</span
+      >
+      <button
+        id="next"
+        class="rounded-full bg-[#EF233C] px-4 py-2 font-bold hover:bg-[#D90429]"
+        aria-label="Slide berikutnya"
+      >
+        <span class="hidden sm:inline">Berikutnya</span> →
+      </button>
+    </nav>
+    <p class="hint text-white/50 text-xs mt-3 text-center">
+      Gunakan ← → pada keyboard · Tekan F untuk layar penuh · Cetak untuk
+      menyimpan PDF
+    </p>
+    <div class="utility mt-2 flex gap-4">
+      <a
+        href="index.html"
+        class="text-xs text-white/70 underline hover:text-white"
+        >&#8592; Kembali ke daftar materi</a
+      >
+      <button
+        id="fullscreen"
+        class="text-xs text-white/70 underline hover:text-white"
+      >
+        Layar penuh
+      </button>
+      <button
+        id="print"
+        class="text-xs text-white/70 underline hover:text-white"
+      >
+        Cetak / Simpan PDF
+      </button>
+    </div>
+
+    <script>
+      const slides = [...document.querySelectorAll(".slide")];
+      const dots = document.getElementById("dots");
+      const counter = document.getElementById("counter");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      let current = 0,
+        busy = false;
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "dot" + (i === 0 ? " current" : "");
+        dot.setAttribute("aria-label", `Buka slide ${i + 1}`);
+        dot.addEventListener("click", () => show(i));
+        dots.appendChild(dot);
+      });
+      function show(index) {
+        if (busy || index === current || index < 0 || index >= slides.length)
+          return;
+        const old = slides[current],
+          direction = index > current ? "exit-next" : "exit-prev";
+        busy = true;
+        old.classList.add(direction);
+        const nextSlide = slides[index];
+        window.setTimeout(() => {
+          old.classList.remove("active", "exit-next", "exit-prev");
+          nextSlide.classList.add("active");
+          current = index;
+          [...dots.children].forEach((d, i) =>
+            d.classList.toggle("current", i === current),
+          );
+          counter.textContent = `${current + 1} / ${slides.length}`;
+          prev.disabled = current === 0;
+          next.disabled = current === slides.length - 1;
+          busy = false;
+        }, 170);
+      }
+      prev.addEventListener("click", () => show(current - 1));
+      next.addEventListener("click", () => show(current + 1));
+      document.addEventListener("keydown", (e) => {
+        if (["ArrowRight", " "].includes(e.key)) {
+          e.preventDefault();
+          show(current + 1);
+        }
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key.toLowerCase() === "f") toggleFullscreen();
+        if (e.key === "Home") show(0);
+        if (e.key === "End") show(slides.length - 1);
+      });
+      async function toggleFullscreen() {
+        const target = document.querySelector(".stage");
+        try {
+          if (!document.fullscreenElement) await target.requestFullscreen();
+          else await document.exitFullscreen();
+        } catch (error) {
+          console.warn("Mode layar penuh tidak tersedia.", error);
+        }
+      }
+      document
+        .getElementById("fullscreen")
+        .addEventListener("click", toggleFullscreen);
+      document
+        .getElementById("print")
+        .addEventListener("click", () => window.print());
+      prev.disabled = true;
+    </script>
+  </body>
+</html>

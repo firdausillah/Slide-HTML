@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BHD RJP | PMI Kabupaten Banyuwangi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --off: #edf2f4;
+        --red: #ef233c;
+        --crimson: #d90429;
+        --navy: #2b2d42;
+        --slate: #8999ae;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #171925;
+        color: var(--navy);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      .stage {
+        width: min(100vw, calc(100vh * 16 / 9));
+        aspect-ratio: 16/9;
+      }
+      .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        background: var(--off);
+      }
+      .slide.active {
+        display: flex;
+        animation: slideIn 0.42s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+      }
+      .slide.exit-next {
+        animation: slideOutLeft 0.18s ease-in both;
+      }
+      .slide.exit-prev {
+        animation: slideOutRight 0.18s ease-in both;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(28px) scale(0.99);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes slideOutLeft {
+        to {
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+      }
+      @keyframes slideOutRight {
+        to {
+          opacity: 0;
+          transform: translateX(18px);
+        }
+      }
+      .kicker {
+        font-size: clamp(9px, 1.05vw, 14px);
+        font-weight: 850;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+      .display {
+        font-size: clamp(26px, 4.4vw, 62px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        font-weight: 950;
+      }
+      .heading {
+        font-size: clamp(22px, 2.8vw, 40px);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        font-weight: 900;
+      }
+      .bodycopy {
+        font-size: clamp(12px, 1.35vw, 18px);
+        line-height: 1.5;
+      }
+      .smallcopy {
+        font-size: clamp(10px, 1.05vw, 14px);
+        line-height: 1.42;
+      }
+      .accent {
+        height: 6px;
+        width: 64px;
+        background: var(--red);
+        border-radius: 999px;
+      }
+      .dot {
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        background: #ffffff55;
+        transition: all 0.2s;
+      }
+      .dot.current {
+        width: 23px;
+        border-radius: 99px;
+        background: var(--red);
+      }
+      .number {
+        font-variant-numeric: tabular-nums;
+      }
+      @media (max-width: 640px) {
+        .controls {
+          gap: 8px;
+        }
+        .controls button {
+          padding: 7px 10px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .slide.active,
+        .slide.exit-next,
+        .slide.exit-prev {
+          animation: none;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          padding: 0 !important;
+        }
+        .controls,
+        .hint,
+        .utility {
+          display: none !important;
+        }
+        .stage {
+          width: 100%;
+          height: auto;
+          aspect-ratio: auto;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+        }
+        .slide {
+          display: flex !important;
+          aspect-ratio: 16/9;
+          page-break-after: always;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center justify-center p-3 sm:p-5"
+  >
+    <main
+      class="stage rounded-2xl overflow-hidden shadow-2xl"
+      aria-label="Presentasi Bantuan Hidup Dasar dan Resusitasi Jantung Paru"
+    >
+      <section
+        class="slide active flex-col justify-between p-[5.5%]"
+        aria-label="Slide 1: Judul"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div class="relative z-10">
+          <p class="kicker mb-3" style="color: var(--crimson)">Segera hadir</p>
+          <h1 class="display mb-4">BHD<br />RJP</h1>
+          <div class="accent mb-4"></div>
+          <p class="bodycopy" style="color: #55596c">
+            Bantuan Hidup Dasar &#8212; Resusitasi Jantung Paru.
+          </p>
+          <p class="font-extrabold text-sm sm:text-lg mt-4">M. Firdausillah</p>
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            Materi dalam penyusunan &#8212; nantikan versi lengkapnya.
+          </p>
+          <p class="kicker">01 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 2: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 2 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">02 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 3: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 3 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">03 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 4: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 4 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">04 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 5: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 5 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">05 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 6: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 6 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">06 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 7: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 7 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">07 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 8: Segera hadir"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129728;</p>
+          <p class="kicker" style="color: var(--crimson)">Dalam penyusunan</p>
+          <h2 class="heading">SEGERA HADIR</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Slide 8 &#8212; BHD RJP.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi
+          </p>
+          <p class="kicker">08 / 09</p>
+        </div>
+      </section>
+      <section
+        class="slide flex-col justify-between p-[5.5%]"
+        aria-label="Slide 9: Penutup"
+      >
+        <div>
+          <img
+            src="assets/logo_pmi_banyuwangi.jpg"
+            alt="Logo Palang Merah Indonesia Kabupaten Banyuwangi"
+            class="h-10 sm:h-14 rounded-xl bg-white"
+          />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center flex-1 gap-3 py-4"
+        >
+          <p class="text-5xl">&#129309;</p>
+          <p class="kicker" style="color: var(--crimson)">Penutup</p>
+          <h2 class="heading">TERIMA KASIH</h2>
+          <p class="bodycopy" style="color: #55596c">
+            Materi BHD RJP segera hadir. Pantau halaman daftar untuk versi
+            lengkapnya.
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-end border-t border-black/10 pt-4 gap-4"
+        >
+          <p class="smallcopy" style="color: var(--slate)">
+            PMI Kabupaten Banyuwangi &#8212; Terima kasih.
+          </p>
+          <p class="kicker">09 / 09</p>
+        </div>
+      </section>
+    </main>
+    <nav
+      class="controls flex items-center justify-center gap-4 sm:gap-6 mt-4 text-white"
+      aria-label="Navigasi presentasi"
+    >
+      <button
+        id="prev"
+        class="rounded-full border border-white/30 px-4 py-2 hover:bg-white/10 disabled:opacity-30"
+        aria-label="Slide sebelumnya"
+      >
+        &#8592; <span class="hidden sm:inline">Sebelumnya</span>
+      </button>
+      <div
+        id="dots"
+        class="flex items-center gap-2"
+        aria-label="Pilih slide"
+      ></div>
+      <span
+        id="counter"
+        class="number text-sm text-white/70 min-w-12 text-center"
+        >1 / 9</span
+      >
+      <button
+        id="next"
+        class="rounded-full px-4 py-2 font-bold"
+        style="background: var(--red)"
+        aria-label="Slide berikutnya"
+      >
+        <span class="hidden sm:inline">Berikutnya</span> &#8594;
+      </button>
+    </nav>
+    <p class="hint text-white/50 text-xs mt-3 text-center">
+      Gunakan &#8592; &#8594; pada keyboard &#183; Tekan F untuk layar penuh
+      &#183; Cetak untuk menyimpan PDF
+    </p>
+    <div class="utility mt-2 flex gap-4">
+      <a
+        href="index.html"
+        class="text-xs text-white/70 underline hover:text-white"
+        >&#8592; Kembali ke daftar materi</a
+      >
+      <button
+        id="fullscreen"
+        class="text-xs text-white/70 underline hover:text-white"
+      >
+        Layar penuh
+      </button>
+      <button
+        id="print"
+        class="text-xs text-white/70 underline hover:text-white"
+      >
+        Cetak / Simpan PDF
+      </button>
+    </div>
+    <script>
+      const slides = [...document.querySelectorAll(".slide")];
+      const dots = document.getElementById("dots");
+      const counter = document.getElementById("counter");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      let current = 0,
+        busy = false;
+      slides.forEach((_, i) => {
+        const d = document.createElement("button");
+        d.className = "dot" + (i === 0 ? " current" : "");
+        d.setAttribute("aria-label", "Buka slide " + (i + 1));
+        d.addEventListener("click", () => show(i));
+        dots.appendChild(d);
+      });
+      function show(index) {
+        if (busy || index === current || index < 0 || index >= slides.length)
+          return;
+        const old = slides[current],
+          dir = index > current ? "exit-next" : "exit-prev";
+        busy = true;
+        old.classList.add(dir);
+        const ns = slides[index];
+        window.setTimeout(() => {
+          old.classList.remove("active", "exit-next", "exit-prev");
+          ns.classList.add("active");
+          current = index;
+          [...dots.children].forEach((d, i) =>
+            d.classList.toggle("current", i === current),
+          );
+          counter.textContent = current + 1 + " / " + slides.length;
+          prev.disabled = current === 0;
+          next.disabled = current === slides.length - 1;
+          busy = false;
+        }, 170);
+      }
+      prev.addEventListener("click", () => show(current - 1));
+      next.addEventListener("click", () => show(current + 1));
+      document.addEventListener("keydown", (e) => {
+        if (["ArrowRight", " "].includes(e.key)) {
+          e.preventDefault();
+          show(current + 1);
+        }
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key.toLowerCase() === "f") toggleFullscreen();
+        if (e.key === "Home") show(0);
+        if (e.key === "End") show(slides.length - 1);
+      });
+      async function toggleFullscreen() {
+        const t = document.querySelector(".stage");
+        try {
+          if (!document.fullscreenElement) await t.requestFullscreen();
+          else await document.exitFullscreen();
+        } catch (err) {
+          console.warn("Mode layar penuh tidak tersedia.", err);
+        }
+      }
+      document
+        .getElementById("fullscreen")
+        .addEventListener("click", toggleFullscreen);
+      document
+        .getElementById("print")
+        .addEventListener("click", () => window.print());
+      prev.disabled = true;
+    </script>
+  </body>
+</html>
